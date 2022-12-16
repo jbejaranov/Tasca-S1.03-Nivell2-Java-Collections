@@ -1,5 +1,7 @@
 package ex1;
 
+import java.util.Objects;
+
 public class Restaurant {
 	String nom;
 	int puntuacio;
@@ -13,13 +15,30 @@ public class Restaurant {
 		return nom;
 	}
 
-	public void setNom(String nom) {
-		this.nom = nom;
+	public int getPuntuacio() {
+		return puntuacio;
 	}
 
 	@Override
 	public String toString() {
 		return "Restaurant [nom=" + nom + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(nom, puntuacio);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Restaurant other = (Restaurant) obj;
+		return Objects.equals(nom, other.nom) && puntuacio == other.puntuacio;
 	}
 
 }
